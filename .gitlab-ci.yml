@@ -1,0 +1,36 @@
+stages:
+  - deploy
+
+deploy-dev:
+  stage: deploy
+  environment: development
+  script:
+    - /var/www/venv/bin/pip3 install pip --upgrade
+    - /var/www/venv/bin/pip3 install .
+  tags:
+    - dev
+  only:
+    - main
+  except:
+    - /^.*-test$/
+    - /^.*-release$/
+    
+deploy-test:
+  stage: deploy
+  environment: test
+  script:
+    - /var/www/venv/bin/pip3 install .
+  tags:
+    - test
+  only:
+    - /^.*-test$/
+
+deploy-prod:
+  stage: deploy
+  environment: production
+  script:
+    - /var/www/venv/bin/pip3 install .
+  tags:
+    - prod
+  only:
+    - /^.*-release$/
