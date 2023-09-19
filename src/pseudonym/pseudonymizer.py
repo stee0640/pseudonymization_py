@@ -2,8 +2,8 @@ from .encrypted_salt import EncryptedSalt
 from .normalizer import Normalizer, DefaultCprNormalizer
 from .hasher import Hasher, Scrypt
 
-# Class for producing pseudonyms given a Normalizer and HashingAlgorithm class. Defaults are a simple CPR-normalizer and Scrypt.
-
+# Class for producing pseudonyms given an instance of a Normalizer and a Hasher
+# Defaults are a simple CPR-normalizer and Scrypt KDF as a hash function.
 
 class Pseudonymizer:
     def __init__(
