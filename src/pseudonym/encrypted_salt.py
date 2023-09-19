@@ -41,7 +41,6 @@ class EncryptedSalt:
 
     def generate(self, encryption_key: bytes):
         """
-
         Generate, encrypt and store a new salt.
 
         :param encryption_key: the key used for encrypting the salt
